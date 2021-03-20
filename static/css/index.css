@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #202d36;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+nav {
+    background-color: #2b3743;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    -webkit-box-shadow: 0px 0px 28px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 28px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 28px -6px rgba(0, 0, 0, 0.75);
+}
+
+.container-nav {
+    color: white;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-weight: 900;
+}
+
+.container-body {
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.container-principal {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.filter-by-country {
+    height: 50px;
+    width: auto;
+    background-color: #2b3743;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    width: 40%;
+}
+
+.filter-input {
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;
+}
+
+.filter-input:focus {
+    outline: none !important;
+}
+
+.filter-input::placeholder {
+    color: white;
+}
+
+.filter-by-region {
+    height: 50px;
+    width: auto;
+    background-color: #2b3743;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
+.select-region {
+    background-color: #2b3743;
+    border: none;
+    color: white;
+}
+
+.option-region {
+    border: none;
+    padding-right: 25px;
+    color: white;
+}
+
+select {
+
+    -webkit-appearance: none;
+    background-position-x: auto;
+}
+
+.icon-filter-region {
+    color: white;
+    font-size: 15px;
+}
+
+.country-card {
+    display: flex;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    height: 320px;
+    background-color: #2b3743;
+    border-radius: 5px;
+    margin-right: 80px;
+    -webkit-box-shadow: 0px 0px 28px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 28px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 28px -6px rgba(0, 0, 0, 0.75);
+    margin : 1em;
+    transition: width 1s, height 1s;
+
+}
+.card:hover{
+    width: 400px;
+    height: 400px;
+    box-shadow: 0px 0px 3px grey;
+}
+
+.card-flag {
+    height: 50%;
+    /*width: auto;*/
+    width: 100%;
+    background-size: cover;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    display: flex;
+    justify-content: center;
+    background-color: #b7c8c9;
+    /*background-image: url('https://restcountries.eu/data/col.svg');*/
+}
+
+
+.country-information {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+}
+
+.title-country {
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.information {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-weight: 300;
+    color: hsl(0, 0%, 100%);
+}
+
+.information-value {
+    color: hsl(0, 0%, 98%);
+    padding-left: 5px;
+
+}
