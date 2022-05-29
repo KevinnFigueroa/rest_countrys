@@ -1,3 +1,5 @@
+const URL_API = "https://restcountries.com/v3.1"
+
 var app = new Vue({
   el: "#app",
   data: {
@@ -26,26 +28,15 @@ var app = new Vue({
       searchByregion(optionSelected.target.value);
     },
   },
-  /*async created() {
-    try {
-      let response = await axios.get("https://restcountries.eu/rest/v2/all");
-      console.log("respuesta del read: ", response["data"]);
 
-      this.informationCards = response["data"];
-      //console.log(`Objetos ${response["data"]}`);
-
-      console.log(`IMPRIMO INFORMATIONCARD ${this.informationCards}`);
-    } catch (error) {
-      console.log(error);
-    }
-  },*/
 });
 
 async function getCountrys() {
   try {
-    let response = await axios.get("https://restcountries.eu/rest/v2/all");
+    let result = await axios.get(`${URL_API}/all`);
 
-    app.informationCards = response["data"];
+    result = formatCapital(result);
+    app.informationCards = result;
   } catch (error) {
     console.log(error);
   }
@@ -55,13 +46,15 @@ async function searchByCountry() {
   if (app.filterByCountry != "") {
     let arrayFilter = app.informationCards.filter((country) => {
       if (
-        country.name.toUpperCase().includes(app.filterByCountry.toUpperCase())
+        country.name.official.toUpperCase().includes(app.filterByCountry.toUpperCase())
       ) {
         return true;
       } else {
         return false;
       }
+
     });
+
     app.informationCards = arrayFilter;
   } else {
     if (app.regionSelected != "") {
@@ -72,13 +65,32 @@ async function searchByCountry() {
   }
 }
 
+function formatCapital(result) {
+  result = result["data"]
+
+  Array.from(result).forEach((country) => {
+    if ('capital' in country) {
+      country["capital"] = country["capital"][0];
+    }
+  })
+
+  return result;
+}
+
 async function searchByregion(region) {
-  console.log(region);
+  console.log(region)
+
   app.regionSelected = region;
-  let url = `https://restcountries.eu/rest/v2/region/${region}`;
+
+  if (region == "filter-by-region") {
+    return;
+  }
+
+  let url = `${URL_API}/region/${region}`;
   let result = await axios.get(url);
 
-  app.informationCards = result["data"];
+  result = formatCapital(result);
+  app.informationCards = result;
 }
 
 //background-image: url('https://restcountries.eu/data/col.svg')

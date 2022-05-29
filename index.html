@@ -54,10 +54,10 @@
                         </div>
                     -->
                         <div class="card-flag">
-                            <img :src=country.flag alt="" srcset="" width="100%" height="100%">
+                            <img :src='country.flags.png' alt="" srcset="" width="100%" height="100%">
                         </div>
                         <div class="country-information">
-                            <h3 class="title-country"> {{ country.name }}</h3>
+                            <h3 class="title-country">{{ country.name.official }}</h3>
                             <h5 class="information">Population: <span>
                                     <h5 class="information-value">{{country.population}}</h5>
                                 </span> </h5>
