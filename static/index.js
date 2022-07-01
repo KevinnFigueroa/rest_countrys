@@ -31,6 +31,8 @@ var app = new Vue({
 
 });
 
+var backupInformationCards = [];
+
 async function getCountrys() {
   try {
     let result = await axios.get(`${URL_API}/all`);
@@ -43,6 +45,9 @@ async function getCountrys() {
 }
 
 async function searchByCountry() {
+  // Hacemos backup
+  backupInformationCards = app.informationCards;
+
   if (app.filterByCountry != "") {
     let arrayFilter = app.informationCards.filter((country) => {
       if (
@@ -78,11 +83,10 @@ function formatCapital(result) {
 }
 
 async function searchByregion(region) {
-  console.log(region)
-
   app.regionSelected = region;
 
   if (region == "filter-by-region") {
+    getCountrys();
     return;
   }
 

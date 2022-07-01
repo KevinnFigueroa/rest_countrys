@@ -48,8 +48,8 @@ nav {
 
 .filters {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .filter-by-country {
@@ -61,43 +61,84 @@ nav {
     justify-content: space-around;
     align-items: center;
     padding-left: 25px;
-    width: 40%;
+    width: auto;
+    margin: 10px;
 }
 
 .filter-input {
     background-color: transparent;
     border: none;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.0rem;
+    height: 100%;
     margin-left: 20px;
 }
 
 .filter-input:focus {
-    outline: none !important;
+    outline: white !important;
+    color: white;
 }
 
 .filter-input::placeholder {
     color: white;
 }
 
-.filter-by-region {
-    height: 50px;
-    width: 20%;
-    background-color: #2b3743;
-    border-radius: 5px;
-    color: white;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    
-    padding-left: 30px;
-    padding-right: 30px;
+.filter-by-region,.filter-by-region * {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
 }
 
+.filter-by-region {
+  position: relative;
+  background-color: #2b3743;
+  border-radius: 4px;
+  width: auto;
+  height: 50px;
+  display: flex;
+  padding-left: 25px;  
+  padding-right: 30px;
+  margin: 10px;
+  
+}
+.filter-by-region select {
+  font-size: 1.0rem;
+  font-weight: normal;
+  max-width: 100%;
+  padding: 8px 24px 8px 10px;
+  border: none;
+  background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  appearance: none;
+}
 
+.filter-by-region select:active, .filter-by-region select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.filter-by-region:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 0;
+  height: 0;
+  margin-top: -2px;
+  border-top: 5px solid #aaa;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
 
 .select-region {
     background-color: #2b3743;
     border: none;
     color: white;
+    font-weight: 300;
+    font-size: 2.2vh;
 }
 
 .option-region {
@@ -107,7 +148,6 @@ nav {
 }
 
 select {
-
     -webkit-appearance: none;
     background-position-x: auto;
 }
@@ -119,8 +159,10 @@ select {
 
 .country-card {
     display: flex;
+    justify-content: center;
     margin-top: 40px;
     flex-wrap: wrap;
+    width: auto;
 }
 
 .card {
@@ -144,46 +186,62 @@ select {
 
 .card-flag {
     height: 50%;
-    /*width: auto;*/
     width: 100%;
     background-size: cover;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
-    display: flex;
-    justify-content: center;
-    background-color: #b7c8c9;
-    /*background-image: url('https://restcountries.eu/data/col.svg');*/
 }
 
+input:focus::placeholder {
+    color: transparent;
+  }
 
 .country-information {
     height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    padding-left: 20px;
+    justify-content: space-between;
+    padding: 15px ;    
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-
 }
 
 .title-country {
     color: white;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
+    font-weight: 900;
+    font-size: 1.2rem;
+    overflow: hidden;
+    width: auto;
+    line-height: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;}
 
 .information {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
-    font-weight: 300;
-    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
 }
 
-.information-value {
-    color: hsl(0, 0%, 98%);
-    padding-left: 5px;
+.row-information {
+    display: flex;
+    justify-content: space-between;
+    width: 100% !important;
+    padding-bottom: 2px;
+}
 
+.information-container{
+    padding: 0px 0px 35px 0px;
+    width: 100%;
+}
+
+
+.information-value {
+    color: hsl(0, 0%, 90%);
+    padding-left: 5px ;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
 }
