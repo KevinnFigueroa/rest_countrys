@@ -32,40 +32,57 @@ var app = new Vue({
 });
 
 var backupInformationCards = [];
+var isInit = true;
 
 async function getCountrys() {
+  
   try {
     let result = await axios.get(`${URL_API}/all`);
-
+    
     result = formatCapital(result);
     app.informationCards = result;
   } catch (error) {
     console.log(error);
   }
+
+  if(isInit){
+    // Hacemos backup
+    backupInformationCards = app.informationCards;
+    isInit = false;
+  }
 }
 
+function filterByCountry(object){
+  let filter = object.filter((country) => {
+    if (
+      country.name.official.toUpperCase().includes(app.filterByCountry.toUpperCase())
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+
+  });
+
+  return filter;
+}
+
+
 async function searchByCountry() {
-  // Hacemos backup
-  backupInformationCards = app.informationCards;
 
   if (app.filterByCountry != "") {
-    let arrayFilter = app.informationCards.filter((country) => {
-      if (
-        country.name.official.toUpperCase().includes(app.filterByCountry.toUpperCase())
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-
-    });
+    if(app.regionSelected != ""){
+      var arrayFilter = filterByCountry(app.informationCards);  
+    }else{
+      var arrayFilter = filterByCountry(backupInformationCards);
+    }
 
     app.informationCards = arrayFilter;
   } else {
     if (app.regionSelected != "") {
       searchByregion(app.regionSelected);
     } else {
-      getCountrys();
+      app.informationCards = backupInformationCards;
     }
   }
 }
@@ -86,7 +103,7 @@ async function searchByregion(region) {
   app.regionSelected = region;
 
   if (region == "filter-by-region") {
-    getCountrys();
+    app.informationCards = backupInformationCards;
     return;
   }
 
