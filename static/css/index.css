@@ -73,6 +73,7 @@ nav {
     font-size: 1.0rem;
     height: 100%;
     margin-left: 20px;
+    color: white;
 }
 
 .filter-input:focus {
